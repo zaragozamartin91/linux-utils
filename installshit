@@ -19,13 +19,14 @@ then
 else
 	tg=$2
 	legroup=${tg:-appusr}
-	ledir=$(basename "$1")
+	ledirname=$(basename "$1")
+	ledir="$1"
 
 	cp -r $ledir /opt 
 
-	chgrp $legroup /opt/$ledir
+	chgrp $legroup /opt/$ledirname
 
-	eqpermug /opt/$ledir
+	eqpermug /opt/$ledirname
 fi
 
 
