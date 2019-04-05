@@ -1,0 +1,14 @@
+#!/bin/bash
+
+tg=$2
+legroup=${tg:-appusr}
+ledir="$1"
+
+cp -r "$ledir" /opt 
+
+chgrp $legroup /opt/"$ledir"
+
+eqpermug /opt/"$ledir"
+
+
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chgrp -R appusr "$1"
+
