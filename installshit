@@ -1,11 +1,21 @@
 #!/bin/bash
 
-if [[ $1 = '-h' ]]
-then
+function prompt_help() {
 	echo "Instala una carpeta como un programa en /opt"
 	echo "uso: $0 dirname [group:-appusr]"
 	echo "	dirname: nombre del directorio a instalar (dentro de currentdir)"
 	echo "	group: grupo al cual otorgar privilegios de uso (por defecto appusr)"
+}
+
+if [[ $# -eq 0 ]]
+then
+	prompt_help
+	exit
+fi
+
+if [[ $1 = '-h' ]]
+then
+	prompt_help
 else
 	tg=$2
 	legroup=${tg:-appusr}
