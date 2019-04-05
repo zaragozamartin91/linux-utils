@@ -24,9 +24,9 @@ else
 
 	cp -r $ledir /opt 
 
-	chgrp $legroup /opt/$ledirname
+	chgrp -R $legroup /opt/"$ledirname"
 
-	eqpermug /opt/$ledirname
+	eqpermug /opt/"$ledirname"
 fi
 
 
