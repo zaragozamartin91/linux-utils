@@ -1,14 +1,23 @@
 #!/bin/bash
 
-tg=$2
-legroup=${tg:-appusr}
-ledir="$1"
+if [[ $1 = '-h' ]]
+then
+	echo "Instala una carpeta como un programa en /opt"
+	echo "uso: $0 dirname [group:-appusr]"
+	echo "	dirname: nombre del directorio a instalar (dentro de currentdir)"
+	echo "	group: grupo al cual otorgar privilegios de uso (por defecto appusr)"
+else
+	tg=$2
+	legroup=${tg:-appusr}
+	ledir=$(basename "$1")
 
-cp -r "$ledir" /opt 
+	cp -r $ledir /opt 
 
-chgrp $legroup /opt/"$ledir"
+	chgrp $legroup /opt/$ledir
 
-eqpermug /opt/"$ledir"
+	eqpermug /opt/$ledir
+fi
+
 
 
 
