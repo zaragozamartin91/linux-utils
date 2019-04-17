@@ -1,0 +1,9 @@
+#!/bin/bash
+
+vserv="$1"
+tport=$2
+vport=${tport:-443}
+
+echo -n | openssl s_client -connect "$vserv":$vport \
+    | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > "$vserv".cert
+

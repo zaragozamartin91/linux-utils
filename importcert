@@ -1,0 +1,13 @@
+#!/bin/bash
+
+vcert="$1"
+valias="$2"
+
+tkeystore="$3"
+vkeystore=${tkeystore:-"$JAVA_HOME/jre/lib/security/cacerts"}
+
+tstorepass="$4"
+vstorepass=${tstorepass:-"changeit"}
+
+keytool -importcert -keystore "$vkeystore" -storepass "$vstorepass" -file "$vcert" -alias "$valias"
+

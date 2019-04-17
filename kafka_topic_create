@@ -1,0 +1,19 @@
+#!/bin/bash
+
+leserv="$1"
+letop="$2"
+
+trep_factor=$3
+lerep_factor=${trep_factor:-1}
+
+tpartitions=$4
+lepartitions=${tpartitions:-1}
+
+echo "server: $leserv"
+echo "topic: $letop"
+echo "replication factor: $lerep_factor"
+echo "partitions: $lepartitions"
+
+$KAFKA_HOME/bin/kafka-topics.sh --create --bootstrap-server "$leserv" --replication-factor $lerep_factor --partitions $lepartitions --topic "$letop"
+
+

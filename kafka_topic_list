@@ -1,0 +1,9 @@
+#!/bin/bash
+
+tserver="$1"
+leserver=${tserver:-"localhost:9092"}
+
+echo "leserver is $leserver"
+
+$KAFKA_HOME/bin/kafka-topics.sh --list --bootstrap-server "$leserver"
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#Llama a cat sobre un archivo que se encuentre en $PATH
+#Uso: catfor <NOMBRE_ARCHIVO>
+#EJ: catfor kafka_topic_create
+
+vfile="$1"
+
+cat $(whereis "$vfile" | cut -d' ' -f2)
+
