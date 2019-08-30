@@ -58,3 +58,21 @@ else
         :
 fi
 
+if [[ -n docker ]]
+then
+  echo "RESTARTING DOCKER..."
+  sleep 1
+  systemcel restart docker
+fi
+
+sleep 2
+
+if [[ -n remove_firewall_drops ]]
+then
+  echo "Removing iptables' DROP rules..."
+  remove_firewall_drops
+else
+  echo "remove_firewall_drops script not found... remove iptables' DROP rules manually"
+fi
+
+
