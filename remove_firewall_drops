@@ -1,0 +1,18 @@
+#!/bin/bash
+
+chains=`sudo iptables --list | grep -i chain | cut -d' ' -f2`
+
+for chain in $chains
+do
+  echo "Working on $chain chain"
+
+  while true
+  do
+    ruleno=`sudo iptables -L $chain --line-numbers | grep DROP | grep -v policy | cut -d' ' -f1 | head -n 1`
+    if [[ -z $ruleno ]] ; then break ; fi
+    echo "Deleting rule No. $ruleno from $chain chain"
+    sudo iptables -D $chain $ruleno
+  done
+done
+
+
