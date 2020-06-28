@@ -1,0 +1,4 @@
+#!/bin/bash
+
+gcloud container clusters resize --zone us-central1-a mz-cluster --num-nodes=$1
+
